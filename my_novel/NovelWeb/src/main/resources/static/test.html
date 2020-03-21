@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<script src="js/jquery-3.4.1.min.js"></script><script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<button value="获取数据" onclick="getA()">获取数据</button>
+	
+	<!-- 上传 -->
+	<input type="file" id="mfile" name="file" />
+
+	<!-- 返回信息显示的位置 -->
+	<h2 id="msg"></h2>
+</body>
+<script type="text/javascript">
+	function getA(){
+/* 		$.post("users/query",
+				//{uid:1},
+			function(data){
+			console.log(data),
+			alert(data.uName)
+			if (data.uId == 1) {
+				alert("测试成功！");
+			} else {
+				alert("测试失败！");
+			}
+
+		},"json") */
+		
+		
+		
+		$.ajax({
+			url : "user/query",// 请求地址
+			type : "POST",// 请求方法
+			data : {
+				uid : 1
+			}, 
+			dataType : "json",// 返回数据类型
+			success : function(data) {// 请求完成执行的方法
+				console.log(data.user);
+				//alert(data.user.uName);
+				if (data.user.uId == 1) {
+					alert("测试成功！"+data.user.createTime);
+				} else {
+					alert("测试失败！");
+				}
+			}					
+		});		
+		
+	}
+	
+	
+	
+	
+	
+	//准备
+	$(function() {
+		//添加事件
+		$("#mfile").change(function() {
+
+			//获取formdata对象
+			var formData = new FormData();
+			//将文件数据获取添加到formdata对象中
+			formData.append("file", $("#mfile")[0].files[0]);
+
+			//使用ajax将数据传到后台返回结果
+			$.ajax({
+				url : "novel/upload",//路径
+				type : "POST",//提交请求方法
+				data : formData,//提交的数据
+				cache : false,//不缓存数据
+				processData : false,//提交的数据不处理
+				contentType : false,//不设置请求头类型
+				encType : "multipart/form-data",//设置数据提交类型
+				success : function(data) {
+					//alert(data);
+					$("#msg").html(data)
+				}
+			});
+		});
+	});
+
+	
+</script>
+</html>

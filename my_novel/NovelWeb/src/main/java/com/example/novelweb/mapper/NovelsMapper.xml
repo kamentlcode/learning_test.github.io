@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.novelweb.mapper.NovelsMapper" >
+  <resultMap id="BaseResultMap" type="com.example.novelweb.dto.Novels" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="n_name" property="nName" jdbcType="VARCHAR" />
+    <result column="n_author" property="nAuthor" jdbcType="VARCHAR" />
+    <result column="n_type" property="nType" jdbcType="VARCHAR" />
+    <result column="n_words" property="nWords" jdbcType="INTEGER" />
+    <result column="n_intro" property="nIntro" jdbcType="VARCHAR" />
+    <result column="n_chapter" property="nChapter" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="n_test01" property="nTest01" jdbcType="VARCHAR" />
+    <result column="n_test02" property="nTest02" jdbcType="VARCHAR" />
+    <result column="n_test03" property="nTest03" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_name, n_author, n_type, n_words, n_intro, n_chapter, create_time, update_time, 
+    n_test01, n_test02, n_test03
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from novels
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from novels
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.novelweb.dto.Novels" >
+    insert into novels (n_id, n_name, n_author, 
+      n_type, n_words, n_intro, 
+      n_chapter, create_time, update_time, 
+      n_test01, n_test02, n_test03
+      )
+    values (#{nId,jdbcType=INTEGER}, #{nName,jdbcType=VARCHAR}, #{nAuthor,jdbcType=VARCHAR}, 
+      #{nType,jdbcType=VARCHAR}, #{nWords,jdbcType=INTEGER}, #{nIntro,jdbcType=VARCHAR}, 
+      #{nChapter,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{nTest01,jdbcType=VARCHAR}, #{nTest02,jdbcType=VARCHAR}, #{nTest03,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.novelweb.dto.Novels" >
+    update novels
+    set n_name = #{nName,jdbcType=VARCHAR},
+      n_author = #{nAuthor,jdbcType=VARCHAR},
+      n_type = #{nType,jdbcType=VARCHAR},
+      n_words = #{nWords,jdbcType=INTEGER},
+      n_intro = #{nIntro,jdbcType=VARCHAR},
+      n_chapter = #{nChapter,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      n_test01 = #{nTest01,jdbcType=VARCHAR},
+      n_test02 = #{nTest02,jdbcType=VARCHAR},
+      n_test03 = #{nTest03,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>
