@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.poi:poi-ooxml-schemas:3.8-beta2">
+    <CLASSES>
+      <root url="jar://E:/STS/sts-bundle/sts-bundle/sts-3.8.2.RELEASE/repository/org/apache/poi/poi-ooxml-schemas/3.8-beta2/poi-ooxml-schemas-3.8-beta2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://E:/STS/sts-bundle/sts-bundle/sts-3.8.2.RELEASE/repository/org/apache/poi/poi-ooxml-schemas/3.8-beta2/poi-ooxml-schemas-3.8-beta2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://E:/STS/sts-bundle/sts-bundle/sts-3.8.2.RELEASE/repository/org/apache/poi/poi-ooxml-schemas/3.8-beta2/poi-ooxml-schemas-3.8-beta2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

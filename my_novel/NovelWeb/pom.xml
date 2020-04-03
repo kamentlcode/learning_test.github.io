@@ -94,6 +94,26 @@
 			<artifactId>poi-scratchpad</artifactId>
 			<version>3.8-beta2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.hashtech.businessframework</groupId>-->
+<!--			<artifactId>business-exception</artifactId>-->
+<!--			<version>2.0.53.RELEASE-SNAPSHOT</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.hashtech.businessframework</groupId>-->
+<!--			<artifactId>business-sequence-spring-boot-starter</artifactId>-->
+<!--			<version>2.0.53.RELEASE-SNAPSHOT</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.hashtech.businessframework</groupId>-->
+<!--			<artifactId>business-validate</artifactId>-->
+<!--			<version>2.0.53.RELEASE-SNAPSHOT</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
