@@ -1,0 +1,16 @@
+[DEFAULT]
+BASEURL=http://www.kusuu.com/
+[DOC_aswift_0]
+BASEURL=http://www.kusuu.com/
+ORIGURL=
+[DOC_aswift_1]
+BASEURL=http://www.kusuu.com/
+ORIGURL=
+[InternetShortcut]
+URL=http://www.kusuu.com/
+IDList=
+IconFile=http://www.kusuu.com/favicon.ico
+IconIndex=1
+HotKey=0
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
