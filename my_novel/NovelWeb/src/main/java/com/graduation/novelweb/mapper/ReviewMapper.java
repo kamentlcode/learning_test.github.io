@@ -7,7 +7,11 @@ public interface ReviewMapper {
 
     int insert(Review record);
 
+    int insertSelective(Review record);
+
     Review selectByPrimaryKey(Integer rId);
+
+    int updateByPrimaryKeySelective(Review record);
 
     int updateByPrimaryKeyWithBLOBs(Review record);
 

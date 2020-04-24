@@ -42,6 +42,97 @@
       #{rTest02,jdbcType=VARCHAR}, #{rTest03,jdbcType=VARCHAR}, #{rContent,jdbcType=LONGVARCHAR}
       )
   </insert>
+  <insert id="insertSelective" parameterType="com.graduation.novelweb.dto.Review" >
+    insert into review
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        r_id,
+      </if>
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="rTest01 != null" >
+        r_test01,
+      </if>
+      <if test="rTest02 != null" >
+        r_test02,
+      </if>
+      <if test="rTest03 != null" >
+        r_test03,
+      </if>
+      <if test="rContent != null" >
+        r_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rTest01 != null" >
+        #{rTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest02 != null" >
+        #{rTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest03 != null" >
+        #{rTest03,jdbcType=VARCHAR},
+      </if>
+      <if test="rContent != null" >
+        #{rContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.novelweb.dto.Review" >
+    update review
+    <set >
+      <if test="nId != null" >
+        n_id = #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rTest01 != null" >
+        r_test01 = #{rTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest02 != null" >
+        r_test02 = #{rTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest03 != null" >
+        r_test03 = #{rTest03,jdbcType=VARCHAR},
+      </if>
+      <if test="rContent != null" >
+        r_content = #{rContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.graduation.novelweb.dto.Review" >
     update review
     set n_id = #{nId,jdbcType=INTEGER},

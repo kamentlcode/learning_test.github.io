@@ -2,11 +2,6 @@ package com.graduation.novelweb.dto;
 
 import java.util.Date;
 
-/**
- * 书评实体类
- * @author tanlin
- *
- */
 public class Review {
     private Integer rId;
 
@@ -71,7 +66,7 @@ public class Review {
     }
 
     public void setrTest01(String rTest01) {
-        this.rTest01 = rTest01;
+        this.rTest01 = rTest01 == null ? null : rTest01.trim();
     }
 
     public String getrTest02() {

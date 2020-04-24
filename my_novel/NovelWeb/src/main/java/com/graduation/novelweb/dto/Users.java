@@ -2,38 +2,15 @@ package com.graduation.novelweb.dto;
 
 import java.util.Date;
 
-import lombok.Data;
-@Data
-
-/**
- * 书评实体类
- * @author tanlin
- *
- */
 public class Users {
-    /**
-     * id
-     */
     private Integer uId;
 
-    /**
-     * 用户昵称
-     */
     private String uNickname;
 
-    /**
-     * 用户名
-     */
     private String uName;
 
-    /**
-     * 用户密码
-     */
     private String uPassword;
 
-    /**
-     * 权限级别
-     */
     private Integer uPermission;
 
     private Date createTime;
@@ -45,8 +22,6 @@ public class Users {
     private String uTest02;
 
     private String uTest03;
-
-    private String formatTime;
 
     public Integer getuId() {
         return uId;

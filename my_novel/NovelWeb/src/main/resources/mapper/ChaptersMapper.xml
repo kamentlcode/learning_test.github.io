@@ -43,7 +43,106 @@
       #{cTest01,jdbcType=VARCHAR}, #{cTest02,jdbcType=VARCHAR}, #{cTest03,jdbcType=VARCHAR}, 
       #{cContent,jdbcType=LONGVARCHAR})
   </insert>
-
+  <insert id="insertSelective" parameterType="com.graduation.novelweb.dto.Chapters" >
+    insert into chapters
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        c_id,
+      </if>
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="cName != null" >
+        c_name,
+      </if>
+      <if test="cWords != null" >
+        c_words,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="cTest01 != null" >
+        c_test01,
+      </if>
+      <if test="cTest02 != null" >
+        c_test02,
+      </if>
+      <if test="cTest03 != null" >
+        c_test03,
+      </if>
+      <if test="cContent != null" >
+        c_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cWords != null" >
+        #{cWords,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cTest01 != null" >
+        #{cTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="cTest02 != null" >
+        #{cTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="cTest03 != null" >
+        #{cTest03,jdbcType=VARCHAR},
+      </if>
+      <if test="cContent != null" >
+        #{cContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.novelweb.dto.Chapters" >
+    update chapters
+    <set >
+      <if test="nId != null" >
+        n_id = #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cWords != null" >
+        c_words = #{cWords,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cTest01 != null" >
+        c_test01 = #{cTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="cTest02 != null" >
+        c_test02 = #{cTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="cTest03 != null" >
+        c_test03 = #{cTest03,jdbcType=VARCHAR},
+      </if>
+      <if test="cContent != null" >
+        c_content = #{cContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.graduation.novelweb.dto.Chapters" >
     update chapters
     set n_id = #{nId,jdbcType=INTEGER},

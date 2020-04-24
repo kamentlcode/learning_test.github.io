@@ -7,7 +7,11 @@ public interface ChaptersMapper {
 
     int insert(Chapters record);
 
+    int insertSelective(Chapters record);
+
     Chapters selectByPrimaryKey(Integer cId);
+
+    int updateByPrimaryKeySelective(Chapters record);
 
     int updateByPrimaryKeyWithBLOBs(Chapters record);
 

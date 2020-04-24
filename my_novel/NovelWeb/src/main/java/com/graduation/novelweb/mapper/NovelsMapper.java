@@ -7,7 +7,11 @@ public interface NovelsMapper {
 
     int insert(Novels record);
 
+    int insertSelective(Novels record);
+
     Novels selectByPrimaryKey(Integer nId);
+
+    int updateByPrimaryKeySelective(Novels record);
 
     int updateByPrimaryKey(Novels record);
 }

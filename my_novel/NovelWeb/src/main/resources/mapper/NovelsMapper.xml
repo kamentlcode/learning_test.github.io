@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graduation.novelweb.mapper.NovelsMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.novelweb.dto.Novels" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="n_name" property="nName" jdbcType="VARCHAR" />
+    <result column="n_author" property="nAuthor" jdbcType="VARCHAR" />
+    <result column="n_type" property="nType" jdbcType="VARCHAR" />
+    <result column="n_intro" property="nIntro" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="n_test01" property="nTest01" jdbcType="VARCHAR" />
+    <result column="n_test02" property="nTest02" jdbcType="VARCHAR" />
+    <result column="n_test03" property="nTest03" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_name, n_author, n_type, n_intro, create_time, update_time, n_test01, n_test02, 
+    n_test03
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from novels
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from novels
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.graduation.novelweb.dto.Novels" >
+    insert into novels (n_id, n_name, n_author, 
+      n_type, n_intro, create_time, 
+      update_time, n_test01, n_test02, 
+      n_test03)
+    values (#{nId,jdbcType=INTEGER}, #{nName,jdbcType=VARCHAR}, #{nAuthor,jdbcType=VARCHAR}, 
+      #{nType,jdbcType=VARCHAR}, #{nIntro,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{nTest01,jdbcType=VARCHAR}, #{nTest02,jdbcType=VARCHAR}, 
+      #{nTest03,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.graduation.novelweb.dto.Novels" >
+    insert into novels
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nName != null" >
+        n_name,
+      </if>
+      <if test="nAuthor != null" >
+        n_author,
+      </if>
+      <if test="nType != null" >
+        n_type,
+      </if>
+      <if test="nIntro != null" >
+        n_intro,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="nTest01 != null" >
+        n_test01,
+      </if>
+      <if test="nTest02 != null" >
+        n_test02,
+      </if>
+      <if test="nTest03 != null" >
+        n_test03,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="nName != null" >
+        #{nName,jdbcType=VARCHAR},
+      </if>
+      <if test="nAuthor != null" >
+        #{nAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="nType != null" >
+        #{nType,jdbcType=VARCHAR},
+      </if>
+      <if test="nIntro != null" >
+        #{nIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nTest01 != null" >
+        #{nTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="nTest02 != null" >
+        #{nTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="nTest03 != null" >
+        #{nTest03,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.novelweb.dto.Novels" >
+    update novels
+    <set >
+      <if test="nName != null" >
+        n_name = #{nName,jdbcType=VARCHAR},
+      </if>
+      <if test="nAuthor != null" >
+        n_author = #{nAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="nType != null" >
+        n_type = #{nType,jdbcType=VARCHAR},
+      </if>
+      <if test="nIntro != null" >
+        n_intro = #{nIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nTest01 != null" >
+        n_test01 = #{nTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="nTest02 != null" >
+        n_test02 = #{nTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="nTest03 != null" >
+        n_test03 = #{nTest03,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.graduation.novelweb.dto.Novels" >
+    update novels
+    set n_name = #{nName,jdbcType=VARCHAR},
+      n_author = #{nAuthor,jdbcType=VARCHAR},
+      n_type = #{nType,jdbcType=VARCHAR},
+      n_intro = #{nIntro,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      n_test01 = #{nTest01,jdbcType=VARCHAR},
+      n_test02 = #{nTest02,jdbcType=VARCHAR},
+      n_test03 = #{nTest03,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>
