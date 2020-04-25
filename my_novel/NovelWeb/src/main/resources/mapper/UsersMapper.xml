@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graduation.novelweb.mapper.UsersMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.novelweb.dto.Users" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="u_nickname" property="uNickname" jdbcType="VARCHAR" />
+    <result column="u_name" property="uName" jdbcType="VARCHAR" />
+    <result column="u_password" property="uPassword" jdbcType="VARCHAR" />
+    <result column="u_permission" property="uPermission" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="u_test01" property="uTest01" jdbcType="VARCHAR" />
+    <result column="u_test02" property="uTest02" jdbcType="VARCHAR" />
+    <result column="u_test03" property="uTest03" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    u_id, u_nickname, u_name, u_password, u_permission, create_time, update_time, u_test01, 
+    u_test02, u_test03
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <select id="pageList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from users
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from users
+    where u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.graduation.novelweb.dto.Users" >
+    insert into users (u_id, u_nickname, u_name, 
+      u_password, u_permission, create_time, 
+      update_time, u_test01, u_test02, 
+      u_test03)
+    values (#{uId,jdbcType=INTEGER}, #{uNickname,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, 
+      #{uPassword,jdbcType=VARCHAR}, #{uPermission,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{uTest01,jdbcType=VARCHAR}, #{uTest02,jdbcType=VARCHAR}, 
+      #{uTest03,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.graduation.novelweb.dto.Users" >
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="uNickname != null" >
+        u_nickname,
+      </if>
+      <if test="uName != null" >
+        u_name,
+      </if>
+      <if test="uPassword != null" >
+        u_password,
+      </if>
+      <if test="uPermission != null" >
+        u_permission,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="uTest01 != null" >
+        u_test01,
+      </if>
+      <if test="uTest02 != null" >
+        u_test02,
+      </if>
+      <if test="uTest03 != null" >
+        u_test03,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uNickname != null" >
+        #{uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uName != null" >
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uPermission != null" >
+        #{uPermission,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uTest01 != null" >
+        #{uTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="uTest02 != null" >
+        #{uTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="uTest03 != null" >
+        #{uTest03,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.novelweb.dto.Users" >
+    update users
+    <set >
+      <if test="uNickname != null" >
+        u_nickname = #{uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uName != null" >
+        u_name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        u_password = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uPermission != null" >
+        u_permission = #{uPermission,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uTest01 != null" >
+        u_test01 = #{uTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="uTest02 != null" >
+        u_test02 = #{uTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="uTest03 != null" >
+        u_test03 = #{uTest03,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.graduation.novelweb.dto.Users" >
+    update users
+    set u_nickname = #{uNickname,jdbcType=VARCHAR},
+      u_name = #{uName,jdbcType=VARCHAR},
+      u_password = #{uPassword,jdbcType=VARCHAR},
+      u_permission = #{uPermission,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      u_test01 = #{uTest01,jdbcType=VARCHAR},
+      u_test02 = #{uTest02,jdbcType=VARCHAR},
+      u_test03 = #{uTest03,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>

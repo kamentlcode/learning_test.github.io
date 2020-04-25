@@ -2,11 +2,6 @@ package com.graduation.novelweb.dto;
 
 import java.util.Date;
 
-/**
- * 书评实体类
- * @author tanlin
- *
- */
 public class Novels {
     private Integer nId;
 
@@ -16,11 +11,7 @@ public class Novels {
 
     private String nType;
 
-    private Integer nWords;
-
     private String nIntro;
-
-    private Integer nChapter;
 
     private Date createTime;
 
@@ -45,7 +36,7 @@ public class Novels {
     }
 
     public void setnName(String nName) {
-        this.nName = nName;
+        this.nName = nName == null ? null : nName.trim();
     }
 
     public String getnAuthor() {
@@ -53,7 +44,7 @@ public class Novels {
     }
 
     public void setnAuthor(String nAuthor) {
-        this.nAuthor = nAuthor;
+        this.nAuthor = nAuthor == null ? null : nAuthor.trim();
     }
 
     public String getnType() {
@@ -61,15 +52,7 @@ public class Novels {
     }
 
     public void setnType(String nType) {
-        this.nType = nType;
-    }
-
-    public Integer getnWords() {
-        return nWords;
-    }
-
-    public void setnWords(Integer nWords) {
-        this.nWords = nWords;
+        this.nType = nType == null ? null : nType.trim();
     }
 
     public String getnIntro() {
@@ -77,15 +60,7 @@ public class Novels {
     }
 
     public void setnIntro(String nIntro) {
-        this.nIntro = nIntro;
-    }
-
-    public Integer getnChapter() {
-        return nChapter;
-    }
-
-    public void setnChapter(Integer nChapter) {
-        this.nChapter = nChapter;
+        this.nIntro = nIntro == null ? null : nIntro.trim();
     }
 
     public Date getCreateTime() {
@@ -109,7 +84,7 @@ public class Novels {
     }
 
     public void setnTest01(String nTest01) {
-        this.nTest01 = nTest01;
+        this.nTest01 = nTest01 == null ? null : nTest01.trim();
     }
 
     public String getnTest02() {
@@ -117,7 +92,7 @@ public class Novels {
     }
 
     public void setnTest02(String nTest02) {
-        this.nTest02 = nTest02;
+        this.nTest02 = nTest02 == null ? null : nTest02.trim();
     }
 
     public String getnTest03() {
@@ -125,6 +100,6 @@ public class Novels {
     }
 
     public void setnTest03(String nTest03) {
-        this.nTest03 = nTest03;
+        this.nTest03 = nTest03 == null ? null : nTest03.trim();
     }
 }

@@ -2,11 +2,6 @@ package com.graduation.novelweb.dto;
 
 import java.util.Date;
 
-/**
- * 书评实体类
- * @author tanlin
- *
- */
 public class Chapters {
     private Integer cId;
 
@@ -49,7 +44,7 @@ public class Chapters {
     }
 
     public void setcName(String cName) {
-        this.cName = cName;
+        this.cName = cName == null ? null : cName.trim();
     }
 
     public Integer getcWords() {
@@ -81,7 +76,7 @@ public class Chapters {
     }
 
     public void setcTest01(String cTest01) {
-        this.cTest01 = cTest01;
+        this.cTest01 = cTest01 == null ? null : cTest01.trim();
     }
 
     public String getcTest02() {
@@ -89,7 +84,7 @@ public class Chapters {
     }
 
     public void setcTest02(String cTest02) {
-        this.cTest02 = cTest02;
+        this.cTest02 = cTest02 == null ? null : cTest02.trim();
     }
 
     public String getcTest03() {
@@ -97,7 +92,7 @@ public class Chapters {
     }
 
     public void setcTest03(String cTest03) {
-        this.cTest03 = cTest03;
+        this.cTest03 = cTest03 == null ? null : cTest03.trim();
     }
 
     public String getcContent() {
@@ -105,6 +100,6 @@ public class Chapters {
     }
 
     public void setcContent(String cContent) {
-        this.cContent = cContent;
+        this.cContent = cContent == null ? null : cContent.trim();
     }
 }

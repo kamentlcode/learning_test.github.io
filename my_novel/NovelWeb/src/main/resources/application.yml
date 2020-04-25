@@ -3,3 +3,9 @@ spring:
     url: jdbc:mysql://localhost:3306/novel
     username: root
     password: 123456
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    deserialization:
+      accept_empty_string_as_null_object: true

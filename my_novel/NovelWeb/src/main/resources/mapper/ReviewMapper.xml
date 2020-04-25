@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graduation.novelweb.mapper.ReviewMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.novelweb.dto.Review" >
+    <id column="r_id" property="rId" jdbcType="INTEGER" />
+    <result column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="r_test01" property="rTest01" jdbcType="VARCHAR" />
+    <result column="r_test02" property="rTest02" jdbcType="VARCHAR" />
+    <result column="r_test03" property="rTest03" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.graduation.novelweb.dto.Review" extends="BaseResultMap" >
+    <result column="r_content" property="rContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    r_id, n_id, u_id, create_time, update_time, r_test01, r_test02, r_test03
+  </sql>
+  <sql id="Blob_Column_List" >
+    r_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from review
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from review
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.graduation.novelweb.dto.Review" >
+    insert into review (r_id, n_id, u_id, 
+      create_time, update_time, r_test01, 
+      r_test02, r_test03, r_content
+      )
+    values (#{rId,jdbcType=INTEGER}, #{nId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{rTest01,jdbcType=VARCHAR}, 
+      #{rTest02,jdbcType=VARCHAR}, #{rTest03,jdbcType=VARCHAR}, #{rContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.graduation.novelweb.dto.Review" >
+    insert into review
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        r_id,
+      </if>
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="rTest01 != null" >
+        r_test01,
+      </if>
+      <if test="rTest02 != null" >
+        r_test02,
+      </if>
+      <if test="rTest03 != null" >
+        r_test03,
+      </if>
+      <if test="rContent != null" >
+        r_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rTest01 != null" >
+        #{rTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest02 != null" >
+        #{rTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest03 != null" >
+        #{rTest03,jdbcType=VARCHAR},
+      </if>
+      <if test="rContent != null" >
+        #{rContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.novelweb.dto.Review" >
+    update review
+    <set >
+      <if test="nId != null" >
+        n_id = #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rTest01 != null" >
+        r_test01 = #{rTest01,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest02 != null" >
+        r_test02 = #{rTest02,jdbcType=VARCHAR},
+      </if>
+      <if test="rTest03 != null" >
+        r_test03 = #{rTest03,jdbcType=VARCHAR},
+      </if>
+      <if test="rContent != null" >
+        r_content = #{rContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.graduation.novelweb.dto.Review" >
+    update review
+    set n_id = #{nId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      r_test01 = #{rTest01,jdbcType=VARCHAR},
+      r_test02 = #{rTest02,jdbcType=VARCHAR},
+      r_test03 = #{rTest03,jdbcType=VARCHAR},
+      r_content = #{rContent,jdbcType=LONGVARCHAR}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.graduation.novelweb.dto.Review" >
+    update review
+    set n_id = #{nId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      r_test01 = #{rTest01,jdbcType=VARCHAR},
+      r_test02 = #{rTest02,jdbcType=VARCHAR},
+      r_test03 = #{rTest03,jdbcType=VARCHAR}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+</mapper>
