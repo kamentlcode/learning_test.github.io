@@ -19,7 +19,15 @@ public class NovelsService {
 	@Autowired
 	private ChaptersMapper chaptersMapper;
 
+	/**
+	 * 新增一本小说书籍
+	 * @param novel
+	 * @return
+	 */
 	public Novels insert(Novels novel){
+		//根据txt文件名来做吧
+		//文件上传完成后
+		//点击入库，获取名称   设置类型，介绍
 		mapper.insert(novel);
 		return novel;
 	}

@@ -45,4 +45,11 @@ public class NovelsController {
 		return "上传成功";
 	}
 
+
+	@RequestMapping("/add")
+	@ResponseBody
+	public void add(){
+		System.out.println("小说新增接口");
+	}
+
 }

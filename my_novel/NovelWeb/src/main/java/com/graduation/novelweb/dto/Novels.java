@@ -3,14 +3,17 @@ package com.graduation.novelweb.dto;
 import java.util.Date;
 
 public class Novels {
+
     private Integer nId;
 
     private String nName;
 
     private String nAuthor;
 
+    //类型
     private String nType;
 
+    //介绍
     private String nIntro;
 
     private Date createTime;
