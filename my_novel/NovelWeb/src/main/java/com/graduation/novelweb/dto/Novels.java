@@ -10,10 +10,10 @@ public class Novels {
 
     private String nAuthor;
 
-    //Á±ªÂûã
+    //¿‡–Õ
     private String nType;
 
-    //‰ªãÁªç
+    //ΩÈ…‹
     private String nIntro;
 
     private Date createTime;
