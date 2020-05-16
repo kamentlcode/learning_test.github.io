@@ -3,13 +3,21 @@ package com.graduation.novelweb.dto;
 import java.util.Date;
 
 public class Chapters {
+
+    //章节id
     private Integer cId;
 
+    //小说id
     private Integer nId;
 
+    //章节名
     private String cName;
 
+    //章节字数
     private Integer cWords;
+
+    //章节内容
+    private String cContent;
 
     private Date createTime;
 
@@ -20,8 +28,6 @@ public class Chapters {
     private String cTest02;
 
     private String cTest03;
-
-    private String cContent;
 
     public Integer getcId() {
         return cId;

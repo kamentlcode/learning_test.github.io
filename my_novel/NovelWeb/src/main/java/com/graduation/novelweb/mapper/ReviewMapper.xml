@@ -28,6 +28,24 @@
     from review
     where r_id = #{rId,jdbcType=INTEGER}
   </select>
+<!--查询小说书评列表-->
+  <select id="pageList" resultMap="ResultMapWithBLOBs" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from review
+    <where>
+      <if test="nId != null">
+        and n_id = #{nId,jdbcType=INTEGER}
+      </if>
+      <if test="uId != null" >
+        and u_id = #{uId,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY create_time desc
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from review
     where r_id = #{rId,jdbcType=INTEGER}

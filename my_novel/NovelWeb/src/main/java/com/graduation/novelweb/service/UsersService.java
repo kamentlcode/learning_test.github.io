@@ -30,10 +30,7 @@ public class UsersService {
 	// 时间格式化工具
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-	Date now = new Date();
-
 	Random random = new Random();
-	int id = random.nextInt(99999);
 
 	/**
 	 * id查询用户
@@ -79,19 +76,36 @@ public class UsersService {
 	 * @return
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	public Users add(Users user){
+	public Integer add(Users user){
 		ParamUtil.checkNotNull(user, MyErrorCode.UserCode.USER_NOT_EXIST);
 		ParamUtil.checkNotBlank(user.getuName(), MyErrorCode.UserCode.USER_NAME_NOTBLANK);
 		ParamUtil.checkNotBlank(user.getuNickname(), MyErrorCode.UserCode.USER_NICKNAME_NOTBLANK);
 		ParamUtil.checkNotBlank(user.getuPassword(), MyErrorCode.UserCode.USER_PASSWORD_NOTBLANK);
 
+		if (null != selectByName(user.getuName())){
+			return -1;
+		}
+		//Integer id = random.nextInt(99999);
+		Date now = new Date();
+		user.setuId(Integer.valueOf(String.valueOf(now.getTime()).substring(0, 10)));
 		user.setCreateTime(now);
 		user.setUpdateTime(now);
 		user.setuPermission(0);
-		//Users u = mapper.selectByPrimaryKey(1);
 
-		mapper.insert(user);
-		return user;
+		//mapper.insert(user);
+		return mapper.insert(user);
+	}
+
+	public Integer login(Users user){
+		Users oldUser = selectByName(user.getuName());
+		if (null == oldUser){
+			return -1;
+		}
+		System.out.println("=="+oldUser.getuName().equals(user.getuName())+"--"+oldUser.getuPassword().equals(user.getuPassword()));
+		if (oldUser.getuName().equals(user.getuName()) && oldUser.getuPassword().equals(user.getuPassword())){
+			return 1;
+		}
+		return 0;
 	}
 
 	/**
@@ -107,6 +121,7 @@ public class UsersService {
 		oldUser.setuNickname(user.getuNickname());
 		oldUser.setuPassword(user.getuPassword());
 		oldUser.setuPermission(user.getuPermission());
+		Date now = new Date();
 		oldUser.setUpdateTime(now);
 
 		mapper.updateByPrimaryKey(oldUser);

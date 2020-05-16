@@ -18,10 +18,16 @@
     u_test02, u_test03
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from users
     where u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from users
+    where u_name = #{uName,jdbcType=INTEGER}
   </select>
   <select id="pageList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
@@ -30,7 +36,7 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from users
-    where u_id = #{uId,jdbcType=INTEGER}
+    where u_id = #{uId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.graduation.novelweb.dto.Users" >
     insert into users (u_id, u_nickname, u_name, 

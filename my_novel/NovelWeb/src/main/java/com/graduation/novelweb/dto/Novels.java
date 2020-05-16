@@ -4,17 +4,39 @@ import java.util.Date;
 
 public class Novels {
 
+    /**
+     * id
+     */
     private Integer nId;
 
+    /**
+     * 名称
+     */
     private String nName;
 
+    /**
+     * 作者
+     */
     private String nAuthor;
 
-    //����
-    private String nType;
+    private enum Type{
+        玄幻,
+        仙侠,
+        都市,
+        历史,
+        科幻,
+    }
+    /**
+     * 类型
+     */
+    private Type nType;
 
-    //����
+    /**
+     * 简介
+     */
     private String nIntro;
+
+    private Integer count;
 
     private Date createTime;
 
@@ -25,6 +47,14 @@ public class Novels {
     private String nTest02;
 
     private String nTest03;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public Integer getnId() {
         return nId;
@@ -47,15 +77,15 @@ public class Novels {
     }
 
     public void setnAuthor(String nAuthor) {
-        this.nAuthor = nAuthor == null ? null : nAuthor.trim();
+        this.nAuthor = nAuthor;
     }
 
-    public String getnType() {
+    public Type getnType() {
         return nType;
     }
 
-    public void setnType(String nType) {
-        this.nType = nType == null ? null : nType.trim();
+    public void setnType(Type nType) {
+        this.nType = nType;
     }
 
     public String getnIntro() {
@@ -63,7 +93,7 @@ public class Novels {
     }
 
     public void setnIntro(String nIntro) {
-        this.nIntro = nIntro == null ? null : nIntro.trim();
+        this.nIntro = nIntro;
     }
 
     public Date getCreateTime() {
@@ -87,7 +117,7 @@ public class Novels {
     }
 
     public void setnTest01(String nTest01) {
-        this.nTest01 = nTest01 == null ? null : nTest01.trim();
+        this.nTest01 = nTest01;
     }
 
     public String getnTest02() {
@@ -95,7 +125,7 @@ public class Novels {
     }
 
     public void setnTest02(String nTest02) {
-        this.nTest02 = nTest02 == null ? null : nTest02.trim();
+        this.nTest02 = nTest02;
     }
 
     public String getnTest03() {
@@ -103,6 +133,6 @@ public class Novels {
     }
 
     public void setnTest03(String nTest03) {
-        this.nTest03 = nTest03 == null ? null : nTest03.trim();
+        this.nTest03 = nTest03;
     }
 }

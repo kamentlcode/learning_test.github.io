@@ -23,6 +23,79 @@
     from novels
     where n_id = #{nId,jdbcType=INTEGER}
   </select>
+<!--查询所有小说列表-->
+  <select id="pageList" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from novels
+    <where>
+      <if test="keyword != null and keyword != ''" >
+        and (n_name like concat('%',#{keyword,jdbcType = VARCHAR},'%')
+        or n_author like concat('%',#{keyword,jdbcType = VARCHAR},'%'))
+      </if>
+      <if test="type != null" >
+        and (n_type = #{type,jdbcType=VARCHAR})
+      </if>
+    </where>
+    ORDER BY create_time DESC
+  </select>
+<!--按收藏数排行的列表-->
+  <select id="countBrList" resultType="com.graduation.novelweb.dto.Novels" parameterType="Map" >
+    select
+    n.n_id as nId, n.n_name as nName, n.n_author as nAuthor, n.n_type as nType, n.n_intro as nIntro,
+    n.create_time as createTime, n.update_time as updateTime,
+    COUNT(1) as count
+    from novels n
+    INNER JOIN boorack_novel_rel bnr on n.n_id = bnr.n_id
+    <where>
+      <if test="keyword != null and keyword != ''" >
+        and (n.n_name like concat('%',#{keyword,jdbcType = VARCHAR},'%')
+        or n.n_author like concat('%',#{keyword,jdbcType = VARCHAR},'%'))
+      </if>
+      <if test="type != null" >
+        and (n.n_type = #{type,jdbcType=VARCHAR})
+      </if>
+    </where>
+    GROUP BY n.n_id
+  </select>
+<!--按总字数排行的列表-->
+  <select id="countWordsList" resultType="com.graduation.novelweb.dto.Novels" parameterType="Map" >
+    select
+    n.n_id as nId, n.n_name as nName, n.n_author as nAuthor, n.n_type as nType, n.n_intro as nIntro,
+    n.create_time as createTime, n.update_time as updateTime,
+    SUM(c.c_words) as count
+    from novels n
+    INNER JOIN chapters c on n.n_id = c.n_id
+    <where>
+      <if test="keyword != null and keyword != ''" >
+        and (n.n_name like concat('%',#{keyword,jdbcType = VARCHAR},'%')
+        or n.n_author like concat('%',#{keyword,jdbcType = VARCHAR},'%'))
+      </if>
+      <if test="type != null" >
+        and (n.n_type = #{type,jdbcType=VARCHAR})
+      </if>
+    </where>
+    GROUP BY n.n_id
+  </select>
+  <!--按总评论数排行的列表-->
+  <select id="countReviewsList" resultType="com.graduation.novelweb.dto.Novels" parameterType="Map" >
+    select
+    n.n_id as nId, n.n_name as nName, n.n_author as nAuthor, n.n_type as nType, n.n_intro as nIntro,
+    n.create_time as createTime, n.update_time as updateTime,
+    COUNT(1) as count
+    from novels n
+    INNER JOIN review r on n.n_id = r.n_id
+    <where>
+      <if test="keyword != null and keyword != ''" >
+        and (n.n_name like concat('%',#{keyword,jdbcType = VARCHAR},'%')
+        or n.n_author like concat('%',#{keyword,jdbcType = VARCHAR},'%'))
+      </if>
+      <if test="type != null" >
+        and (n.n_type = #{type,jdbcType=VARCHAR})
+      </if>
+    </where>
+    GROUP BY n.n_id
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from novels
     where n_id = #{nId,jdbcType=INTEGER}

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/novel
+    url: jdbc:mysql://localhost:3306/novel?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
 

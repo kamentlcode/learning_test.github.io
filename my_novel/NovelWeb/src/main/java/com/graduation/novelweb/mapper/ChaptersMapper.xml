@@ -29,6 +29,23 @@
     from chapters
     where c_id = #{cId,jdbcType=INTEGER}
   </select>
+<!--  小说id查询所有章节-->
+  <select id="page" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    c_id, c_name
+    from chapters
+    where n_id = #{nId,jdbcType=INTEGER}
+    order by c_id
+  </select>
+  <!--  小说id查询最新章节-->
+  <select id="selectNewest" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from chapters
+    where n_id = #{nId,jdbcType=INTEGER}
+    order by c_id desc
+    limit 1
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from chapters
     where c_id = #{cId,jdbcType=INTEGER}
@@ -38,7 +55,7 @@
       c_words, create_time, update_time, 
       c_test01, c_test02, c_test03, 
       c_content)
-    values (#{cId,jdbcType=INTEGER}, #{nId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, 
+    values (#{cId,jdbcType=INTEGER}, #{nId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR},
       #{cWords,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{cTest01,jdbcType=VARCHAR}, #{cTest02,jdbcType=VARCHAR}, #{cTest03,jdbcType=VARCHAR}, 
       #{cContent,jdbcType=LONGVARCHAR})

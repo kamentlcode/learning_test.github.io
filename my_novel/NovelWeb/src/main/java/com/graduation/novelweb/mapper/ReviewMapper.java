@@ -1,7 +1,13 @@
 package com.graduation.novelweb.mapper;
 
 import com.graduation.novelweb.dto.Review;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+/**
+ * 书评接口
+ */
 public interface ReviewMapper {
     int deleteByPrimaryKey(Integer rId);
 
@@ -16,4 +22,7 @@ public interface ReviewMapper {
     int updateByPrimaryKeyWithBLOBs(Review record);
 
     int updateByPrimaryKey(Review record);
+
+    List<Review> pageList(@Param("nId") Integer nId,
+                          @Param("uId") Integer uId);
 }

@@ -27,11 +27,11 @@ var Cookie = {
 }
 
 function readbook(bookid) {
-	$.get("/modules/article/articlevisit.php?id=" + bookid);
+	//$.get("/modules/article/articlevisit.php?id=" + bookid);
 }
 
 function vote_nomsg(aid) {
-	$.get('/modules/article/uservote.php?id=' + aid + '&ajax_request=1');
+	//$.get('/modules/article/uservote.php?id=' + aid + '&ajax_request=1');
 }
 
 function addBookmark(title, url) {

@@ -1,7 +1,7 @@
 package com.graduation.novelweb.util;
 
 public class Content {
-    private long id;
+    private Integer id;
     private String name;
     //txt所带章节
     private String chapter;
@@ -12,7 +12,7 @@ public class Content {
     public Content() {
     }
  
-    public Content(long id, String name, String chapter, String content, long number) {
+    public Content(Integer id, String name, String chapter, String content, long number) {
         this.id = id;
         this.name = name;
         this.chapter = chapter;
@@ -24,7 +24,7 @@ public class Content {
         return id;
     }
  
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
  

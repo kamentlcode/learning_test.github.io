@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graduation.novelweb.mapper.BookrackMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.novelweb.dto.Bookrack">
+    <id column="b_id" property="bId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="b_name" property="bName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <!--  从书架中获取藏书消息-->
+    <collection property="brNovels" javaType="ArrayList" column="b_id"
+                ofType="com.graduation.novelweb.dto.Novels"
+                select="selectNovelsBybId"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    b_id, u_id, b_name, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bookrack
+    where b_id = #{bId,jdbcType=INTEGER}
+  </select>
+<!--  从书架中获取藏书信息-->
+  <select id="selectNovelsBybId" resultType="com.graduation.novelweb.dto.Novels" >
+    select
+    n.n_id as nId, n.n_name as nName, n.n_author as nAuthor, n.n_type as nType, n.n_intro as nIntro,
+    n.create_time as createTime, n.update_time as updateTime, n.n_test01 as nTest01,
+    n.n_test02 as nTest02,n.n_test03 as nTest03
+    from boorack_novel_rel bnr
+    left join novels n on n.n_id = bnr.n_id
+    where b_id = #{bId,jdbcType=INTEGER}
+  </select>
+<!--  获取用户的书架-->
+  <select id="pageList" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from `bookrack`
+    <where>
+      u_id = #{uId,jdbcType=INTEGER}
+      <if test="bName != null and bName != ''" >
+        and (b_name like concat('%',#{bName,jdbcType = VARCHAR},'%'))
+      </if>
+    </where>
+    ORDER BY create_time
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bookrack
+    where b_id = #{bId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.graduation.novelweb.dto.Bookrack" >
+    insert into bookrack (b_id, u_id,
+      b_name, create_time, update_time
+      )
+    values (#{bId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER},
+      #{bName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.graduation.novelweb.dto.Bookrack" >
+    update bookrack
+    set
+      u_id = #{uId,jdbcType=INTEGER},
+      b_name = #{bName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where b_id = #{bId,jdbcType=INTEGER}
+  </update>
+</mapper>

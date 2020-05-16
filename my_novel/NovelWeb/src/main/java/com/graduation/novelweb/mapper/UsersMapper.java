@@ -24,7 +24,7 @@ public interface UsersMapper {
      * @param name
      * @return
      */
-    Users selectByName(@Param("uName") String name);
+    Users selectByName(String name);
 
     List<Users> pageList();
 }

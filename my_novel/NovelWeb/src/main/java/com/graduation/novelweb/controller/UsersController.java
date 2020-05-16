@@ -79,9 +79,9 @@ public class UsersController {
     @PostMapping("/register")
     @ResponseBody
     public JSONObject addUser(@RequestBody Users user) {
-        Users newUser = service.add(user);
-        System.out.println("-----" + user.getuName());
-        json.put("user", newUser);
+
+        //System.out.println("-----" + user.getuName());
+        json.put("registerStatue", service.add(user));
         return json;
 
     }
@@ -94,6 +94,21 @@ public class UsersController {
 //			DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //			binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor为自定义日期编辑器
 //		}
+
+    /**
+     * 用户注册
+     *
+     * @param user
+     */
+    @PostMapping("/login")
+    @ResponseBody
+    public JSONObject login(@RequestBody Users user) {
+
+        //System.out.println("-----" + user.getuName());
+        json.put("loginStatue", service.login(user));
+        return json;
+
+    }
 
 
 }

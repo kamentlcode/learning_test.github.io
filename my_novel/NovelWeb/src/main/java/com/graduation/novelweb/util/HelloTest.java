@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  
 public class HelloTest {
     public static void main(String[] args) {
-        //String fileNamedirs="H:\\星辰变\\星辰变.txt";
+
         String fileNamedirs="F:\\设计文稿\\小说资源\\斗破苍穹\\斗破.txt";
         try {
             // 编码格式
@@ -40,12 +40,12 @@ public class HelloTest {
                     count++;
                     // 正则表达式
                     Pattern p = Pattern.compile("(^\\s*第)(.{1,9})[章节卷集部篇回](\\s{1})(.*)($\\s*)");
- 
+
                     Matcher matcher = p.matcher(lineTxt);
                     Matcher matcher1 = p.matcher(lineTxt);
- 
+
                     newStr=newStr+lineTxt;
- 
+
                     while (matcher.find()) {
                         titleName = matcher.group();
                         //章节去空
@@ -56,6 +56,7 @@ public class HelloTest {
                         indexOf1=indexOf;
                         //System.out.println(indexOf);
                         indexOf = newStr.indexOf(newChapterName);
+                        System.out.println("indexOf"+indexOf);
                        //System.out.println(newChapterName + ":" + "第" + count + "行"); // 得到返回的章
                         if(bflag) {
                             bflag=false;
@@ -78,7 +79,7 @@ public class HelloTest {
                             //System.out.println(substring);
                             content.setContent(substring);
                             //System.out.println(content.toString());+content.getChapter()
-                            System.out.println(content.getNumber()+"=="+indexOf+"=="+content.getContent());
+                            //System.out.println(content.getNumber()+"=="+indexOf+"=="+content.getContent());
                         }
  
                     }
@@ -92,4 +93,9 @@ public class HelloTest {
             e.printStackTrace();
         }
     }
+
+
+
+
+
 }
