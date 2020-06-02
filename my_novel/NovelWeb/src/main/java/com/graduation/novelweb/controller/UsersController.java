@@ -3,6 +3,7 @@ package com.graduation.novelweb.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
@@ -11,11 +12,16 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import com.graduation.novelweb.dto.Users;
 import com.graduation.novelweb.service.UsersService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -32,6 +38,8 @@ public class UsersController {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     // 创建json对象
     JSONObject json = new JSONObject();
+    // 用户登录状态
+    private HashMap<HttpSession, Users> userSession = new HashMap<HttpSession, Users>();
 
     /**
      * 根据id查询用户
@@ -54,8 +62,8 @@ public class UsersController {
 
     /**
      * 根据id查询用户
-     *
-     * @param uid
+     * @param pageNum
+     * @param pageSize
      * @return
      */
     @GetMapping("/page")
@@ -64,8 +72,7 @@ public class UsersController {
                            @RequestParam(required = false) Integer pageSize) {
         PageInfo<Users> page = PageUtil.createPageInfo(pageNum, pageSize, Users.class);
 	    page = service.page(page);
-        //user.setFormatTime(sdf.format(user.getCreateTime()));
-        //user.setFormatTime(sdf.format(user.getUpdateTime()));
+
         json.put("users", page);
         return json;
 
@@ -80,20 +87,10 @@ public class UsersController {
     @ResponseBody
     public JSONObject addUser(@RequestBody Users user) {
 
-        //System.out.println("-----" + user.getuName());
         json.put("registerStatue", service.add(user));
         return json;
 
     }
-
-    //只需要加上下面这段即可，注意不能忘记注解
-//		@InitBinder
-//		public void initBinder(WebDataBinder binder, WebRequest request) {
-//
-//			//转换日期
-//			DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//			binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor为自定义日期编辑器
-//		}
 
     /**
      * 用户注册
@@ -102,13 +99,40 @@ public class UsersController {
      */
     @PostMapping("/login")
     @ResponseBody
-    public JSONObject login(@RequestBody Users user) {
+    public JSONObject login(@RequestBody Users user, HttpServletRequest request) {
 
-        //System.out.println("-----" + user.getuName());
-        json.put("loginStatue", service.login(user));
+        json.put("loginStatue", service.login(user,request));
         return json;
 
     }
 
+    /**
+     * 从session中获取用户信息
+     * @param request
+     */
+    @GetMapping("/session/in")
+    @ResponseBody
+    public JSONObject in(HttpServletRequest request) {
+        // 获取当前session
+        System.out.println("……从session中获取用户信息……");
+        json.put("session",service.in(request));
+
+        return json;
+
+    }
+
+    /**
+     * 用户退出登录
+     * @param request
+     */
+    @GetMapping("/session/out")
+    @ResponseBody
+    public JSONObject out(HttpServletRequest request) {
+        // 获取当前session
+        System.out.println("……从session中移除用户信息……");
+        json.put("session",service.out(request));
+        return json;
+
+    }
 
 }

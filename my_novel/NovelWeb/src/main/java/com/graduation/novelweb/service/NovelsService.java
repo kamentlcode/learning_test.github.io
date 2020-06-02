@@ -134,17 +134,14 @@ public class NovelsService {
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Novels> novels = mapper.countReviewsList(keyword,type);
 		//按书评数从大到小排列排行
-		Collections.sort(novels, new Comparator<Novels>() {
-			@Override
-			public int compare(Novels n0, Novels n1) {
-				if (null==n0.getCount()){
-					n0.setCount(0);
-				}
-				if (null==n1.getCount()){
-					n1.setCount(0);
-				}
-				return n1.getCount()-n0.getCount();
+		Collections.sort(novels, (n0, n1) -> {
+			if (null==n0.getCount()){
+				n0.setCount(0);
 			}
+			if (null==n1.getCount()){
+				n1.setCount(0);
+			}
+			return n1.getCount()-n0.getCount();
 		});
 		page =((Page<Novels>)novels).toPageInfo();
 		return page;

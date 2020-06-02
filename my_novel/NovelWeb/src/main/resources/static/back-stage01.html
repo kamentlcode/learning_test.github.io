@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>用户管理</title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/the_03.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/page.css">
+		<link href="css/font-awesome.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/themain.css" />
+
+	</head>
+
+	<body>
+
+		<div class="navbar-inverse">
+			<!--导航栏总模块-->
+			<div class="container-fluid">
+
+				<!--标题头-->
+				<div class="navbar-header ">
+					<a class="navbar-brand">奇 点 小 说 网 管 理 系 统</a>
+				</div>
+
+				<!--导航栏内容模块-->
+				<div>
+					<ul class="nav navbar-nav ">
+						<!--导航栏具体内容-->
+						<!--<li id="title_01">
+							<a href="themain_01.html">车位管理</a>
+						</li>
+						<li id="title_02">
+							<a href="themain_02.html">闸机管理</a>
+						</li>-->
+						<li id="title_03" class="active">
+							<a href="back-stage01.html">用户管理</a>
+						</li>
+						<li id="title_04">
+							<a href="back-stage02.html">书籍管理</a>
+						</li>
+						<li id="blanked">
+							<div class="blanked">
+								<p class="blanked">奇 点 小 说 网 管 理 系 统 奇 点 小 说 网 管 理 系 统奇 点 小 说 网 管 理 系 统奇 点 小 说 网 管 理 系 统奇 点 小 说 网 管 理 系 统
+								奇 点 小 说 网 管 理 系 统</p>
+							</div>
+						</li>
+						<li id="title_05">
+							<a href="login-page.html">退出登录</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="in_main" class="col-md-12 column navbar-inverse">
+			<!--侧边栏-->
+			<div id="left_line" class="col-xs-1 ">
+
+				<ul class="nav navbar-inverse">
+					<li id="left_03_01" class="active">
+						<a href="#">所有用户</a>
+					</li>
+					<!--<li id="left_03_02">
+						<a href="#">注册用户</a>
+					</li>
+					<li id="left_03_03">
+						<a href="#">用户充值</a>
+					</li>-->
+
+				</ul>
+			</div>
+			<!--主体内容模块-->
+			<div id="car_main" class="col-md-11 column ">
+				<div>
+					<!--第三栏第一块显示内容-->
+					<div id="themsg_03_01">
+
+						<!-- 输入用户昵称或账户名查询用户信息-->
+						<br />
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>请输入用户昵称或账户名</th>
+									<th>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="newvip_name">
+										</div>
+									</th>
+									<th><button type="button" class="btn btn-danger" id="select_two">
+										<i class="fa fa-search fa-fw"></i>查询</button></th>
+
+								</tr>
+							</thead>
+						</table>
+
+						<table class="table table-hover">
+							<caption>用户信息</caption>
+							<thead>
+								<tr>
+									<th></th>
+									<th>用户编号</th>
+									<th>账户名</th>
+									<th>用户昵称</th>
+									<th>用户等级</th>
+									<th>入站时间</th>
+									<th>已收藏书籍数</th>
+									<th>已发表书评数</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody id="allvip_msg">
+								<tr>
+									<td></td>
+									<td>001</td>
+									<td>admin</td>
+									<td>网站站长</td>
+									<td>9</td>
+									<td>2020-04-12</td>
+									<td>12 本</td>
+									<td>32 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>002</td>
+									<td>zz6699</td>
+									<td>网站测试员</td>
+									<td>9</td>
+									<td>2020-04-13</td>
+									<td>16 本</td>
+									<td>44 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>003</td>
+									<td>zse123456</td>
+									<td>既白白白</td>
+									<td>1</td>
+									<td>2020-04-14</td>
+									<td>2 本</td>
+									<td>32 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>004</td>
+									<td>zserffs</td>
+									<td>来吧4199</td>
+									<td>1</td>
+									<td>2020-04-22</td>
+									<td>1 本</td>
+									<td>3 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>005</td>
+									<td>nanjin66</td>
+									<td>南方黑芝麻糊</td>
+									<td>2</td>
+									<td>2020-04-22</td>
+									<td>3 本</td>
+									<td>16 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>006</td>
+									<td>uziQAQ</td>
+									<td>诗酒梅花香香</td>
+									<td>1</td>
+									<td>2020-04-22</td>
+									<td>2 本</td>
+									<td>2 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>007</td>
+									<td>xz777</td>
+									<td>江湖百晓生</td>
+									<td>1</td>
+									<td>2020-04-22</td>
+									<td>1 本</td>
+									<td>1 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>008</td>
+									<td>Larry_Xia</td>
+									<td>Larry_Xia</td>
+									<td>1</td>
+									<td>2020-04-23</td>
+									<td>1 本</td>
+									<td>1 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>
+								<!--<tr>
+									<td></td>
+									<td>009</td>
+									<td>admin</td>
+									<td>网站站长</td>
+									<td>9</td>
+									<td>2020-04-12</td>
+									<td>12 本</td>
+									<td>32 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>-->
+								<!--<tr>
+									<td></td>
+									<td>010</td>
+									<td>admin</td>
+									<td>网站站长</td>
+									<td>9</td>
+									<td>2020-04-12</td>
+									<td>12 本</td>
+									<td>32 条</td>
+									<td class="text-right">
+										<button type="button" class="btn btn-warning">编辑用户</button>
+										<button type="button" class="btn btn-danger">注销用户</button>
+									</td>
+								</tr>-->
+
+							</tbody>
+						</table>
+						<div style="text-align: center;">
+							<div id="pager" class="pager clearfix">
+							</div>
+						</div>
+
+					</div>
+
+					<!--第三栏第二块显示内容-->
+					<!--<div id="themsg_03_02" class="text-center">
+
+						<div class="col-md-10 column">
+
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="firstname" class="col-sm-2 control-label">用户姓名：</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="newvip_name" placeholder="请输入用户姓名">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="lastname" class="col-sm-2 control-label">车牌号码：</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="newvip_carnum" placeholder="请绑定车牌号码">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="lastname" class="col-sm-2 control-label">注册金额：</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="newvip_money" placeholder="请输入注册金额">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button id="insertvip" type="submit" class="btn btn-default">注册</button>
+										<button type="reset" class="btn btn-default">重置</button>
+									</div>
+
+								</div>
+							</form>
+						</div>
+
+					</div>
+
+					<!--第三栏第三块显示内容-->
+					<!--<div id="themsg_03_03" class="text-center">
+						<div class="col-md-10 column">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="firstname" class="col-sm-2 control-label">用户姓名：</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="vip_name_1" name="vip_name" placeholder="请输入用户姓名">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="lastname" class="col-sm-2 control-label">车牌号码：</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" name="vip_carnum" id="vip_carnum_1" placeholder="请验证车牌号码">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="lastname" class="col-sm-2 control-label">充值金额：</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="vip_money_1" name="vip_money" placeholder="请输入充值金额">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button id="vip_button" type="button" class="btn btn-default">确定</button>
+										<button type="reset" class="btn btn-default">重置</button>
+									</div>
+
+								</div>
+							</form>
+						</div>
+
+					</div>-->
+
+				</div>
+
+			</div>
+		</div>
+
+		<!--弹出框-->
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden='true' data-backdrop='static'>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<!--头-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">查询到的用户信息</h4>
+					</div>
+					<!--主要-->
+					<div class="modal-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>用户编号</th>
+									<th>用户名</th>
+									<th>用户昵称</th>
+									<th>用户等级</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="in_msg1"></td>
+									<td id="in_msg2"></td>
+									<td id="in_msg3"></td>
+									<td id="in_msg4"></td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+					<!--尾-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+						<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script src="js/jquery.z-pager.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("#pager").zPager({
+			totalData: 20,
+			htmlBox: $('#wraper'),
+			btnShow: true,
+			ajaxSetData: false
+		});
+
+		function currentPage(currentPage) {
+			/*
+				触发页码数位置： Page/js/jquery.z-pager.js 64行
+			*/
+			console.log("当前页码数：" + currentPage);
+		}
+	</script>
+
+</html>

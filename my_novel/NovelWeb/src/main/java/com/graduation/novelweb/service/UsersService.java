@@ -2,6 +2,7 @@ package com.graduation.novelweb.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +19,9 @@ import com.graduation.novelweb.mapper.UsersMapper;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * 用户业务处理层
  * @author tanlin
@@ -27,10 +31,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class UsersService {
 	@Autowired
 	private UsersMapper mapper;
-	// 时间格式化工具
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-	Random random = new Random();
+	// 用户登录状态
+	private HashMap<HttpSession, Users> userSession = new HashMap<HttpSession, Users>();
 
 	/**
 	 * id查询用户
@@ -96,13 +98,15 @@ public class UsersService {
 		return mapper.insert(user);
 	}
 
-	public Integer login(Users user){
+	public Integer login(Users user,  HttpServletRequest request){
 		Users oldUser = selectByName(user.getuName());
 		if (null == oldUser){
 			return -1;
 		}
 		System.out.println("=="+oldUser.getuName().equals(user.getuName())+"--"+oldUser.getuPassword().equals(user.getuPassword()));
 		if (oldUser.getuName().equals(user.getuName()) && oldUser.getuPassword().equals(user.getuPassword())){
+			HttpSession session = request.getSession();
+			userSession.put(session,oldUser);
 			return 1;
 		}
 		return 0;
@@ -140,5 +144,16 @@ public class UsersService {
 		//user.setFormatTime(sdf.format(user.getUpdateTime()));
 		return result;
 	}
+
+	public Users in(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		return userSession.get(session);
+	}
+
+	public Users out(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		return userSession.remove(session);
+	}
+
 
 }

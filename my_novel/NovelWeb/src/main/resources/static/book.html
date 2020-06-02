@@ -107,7 +107,7 @@
 					<div class="row">
 						<div class="col-md-2 col-xs-4 hidden-xs"><img class="img-thumbnail" alt="忠犬已到请签收" src="http://rw.svip3.cn/files/article/image/0/4/4s.jpg" title="忠犬已到请签收" onerror="this.src='/modules/article/images/nocover.jpg';" width="140" height="180" /></div>
 						<div class="col-md-10">
-							<h1 class="bookTitle">忠犬已到请签收</h1>
+							<!--<h1 class="bookTitle">忠犬已到请签收</h1>
 							<p class="booktag">
 								<a class="red" href="http://rw.svip3.cn/modules/article/authorarticle.php?author=%B5%AD%D6%E0" target="_blank" title="作者：淡粥">淡粥</a>
 								<a class="red" href="/list/3.html" target="_blank" title="都市小说">都市小说</a>
@@ -124,7 +124,7 @@
             </span> <span class="col-md-4 col-xs-12 mt10 fs-12">  <a class="errorlink text-warning ml10" href="javascript:void(0);" target="_blank" rel="nofollow"><i class="fa fa-comments fa-fw"></i>留言反馈</a> </span>
 								<div class="clear"></div>
 							</div>
-							<hr />
+							<hr />-->
 							<p class="text-muted" id="bookIntro" style=""> <img class="img-thumbnail pull-left visible-xs" style="margin:0 5px 0 0" alt="忠犬已到请签收" src="http://rw.svip3.cn/files/article/image/0/4/4s.jpg" title="忠犬已到请签收" onerror="this.src='/modules/article/images/nocover.jpg';" width="80" height="120" /> &nbsp;&nbsp;出生在音乐世家，致力推崇传统音淡粥最新鼎力大作，2017年度必看都市小说。 </p>
 						</div>
 						<div class="clear"></div>
@@ -141,15 +141,16 @@
   	id查询书评接口
   	id查询用户信息接口
   -->
-			<ul class="nav nav-tabs">
-				<li role="presentation" class="active" id="chapters_id">
-					<a href="#">全部章节</a>
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active" id="click_c">
+					<a href="#tab-weekvisit" role="tab" data-toggle="tab">全部章节</a>
 				</li>
-				<li role="presentation" id="review_id">
-					<a href="#">书评区</a>
+				<li role="presentation" id="click_r">
+					<a href="#tab-goodnum" role="tab" data-toggle="tab">所有书评</a>
 				</li>
 			</ul>
 
+			<!--全部章节-->
 			<div class="panel panel-default" id="list-chapterAll">
 				<!--    <div class="panel-heading"><i class="fa fa-list fa-fw"></i><strong>《忠犬已到请签收》全部章节目录</strong></div>-->
 				<dl class="panel-body panel-chapterlist" id="chapters">
@@ -157,7 +158,80 @@
 					<div class="clear"></div>
 				</dl>
 			</div>
-		
+
+			<!--书评区-->
+			<div id="review">
+				<form role="form">
+					<div class="form-group">
+						<p>留下自己的评论吧！</p>
+						<textarea class="form-control" rows="3">
+					</textarea>
+						<br />
+						<div class="text-right">
+							<button type="button" class="btn btn-success">发布</button>
+
+						</div>
+					</div>
+				</form>
+				<div class="panel panel-default">
+					<table class="table table-hover" id="review_message">
+						<tbody id="allvip_msg">
+							<tr>
+								<td>
+									<h4 class="text-left">网站测试员</h4>
+								</td>
+							</tr>
+							<tr>
+								<td style="border: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本书是网文大神“爱潜水的乌贼”的第二部小说，在他完成了仙侠小说《灭运图录》之后，开始了本书的创作。经过第一部小说对文笔和情节设计的锤炼，到了写作《奥术神座》时，作者的笔力已经稳定在了一个相当的水平上。
+									<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在写作中，他不断提升自身对小说节奏、高潮、全文布局的掌控能力。在每一卷结尾时，都有他对这一卷的自我点评。看得出作者对自身要求的重视。 完全不同于某些一书封神后就不断吃老本走套路的所谓大神——所以那些人在“封神”之后很快就走向了末路， 但“爱潜水的乌贼”仍是我很少几个看完小说之后对其未来作品还有期待的作者。
+								</td>
+							</tr>
+							<tr>
+								<td style="border: none;">
+									<h6 class="text-right">2020-05-14 09:33:11</h6>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<h4 class="text-left">网站站长</h4>
+								</td>
+							</tr>
+
+							<tr>
+								<td style="border: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很有想法的小说。 根据作者在正传结束之后所言，其实他最开始的构思就只是路西恩嘴炮维肯，这句话我信了……
+									<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以更加觉得乌贼做到了我可能一辈子都做不到的一件事儿： 就因为一个想法，硬是往前边说了三百万字。。。 别说三百万，三万字还没写完我就忍不住想给身边人泄底了，纯粹是憋的。
+								</td>
+							</tr>
+							<tr>
+								<td style="border: none;">
+									<h6 class="text-right">2020-05-08 15:36:31</h6>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<h4 class="text-left">诗酒梅花香香</h4>
+								</td>
+							</tr>
+
+							<tr>
+								<td style="border: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大胆的假设，严密的演绎，向我们展示了一个不同于其他剑与魔法小说的科技魔法世界。如果我们暂时忘记过去的经验，忘记直观的认识，忘记外面的世界，将会发现，这是一个独立的、完备的、真实的、逻辑严谨的科技魔法世界，或许我们该称呼它为乌贼娘世界。
+									<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一篇兼具开创性、突破性、普及性的小说，在以后的小说构思中必将发挥非常重要的作用，同时极具讨论价值，建议奖励奥术积分六百个，奥术点五千。
+								</td>
+							</tr>
+							<tr>
+								<td style="border: none;">
+									<h6 class="text-right">2020-05-08 16:21:22</h6>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+				<!--书评完成-->
+
+			</div>
 			<!--页码-->
 			<div style="text-align: center;">
 				<div id="pager" class="pager clearfix">
